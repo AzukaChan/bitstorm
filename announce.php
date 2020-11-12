@@ -35,6 +35,9 @@ define('__INTERVAL_MIN', 60);
 // By default, never encode more than this number of peers in a single request
 define('__MAX_PPR', 20);
 
+// Browser Redirect
+define('__REDIR_BROWSER', 'https://torrents.azukachan.com');
+
  /***********************
  ** Configuration end **
  ***********************/
@@ -173,7 +176,7 @@ function track($list, $c=0, $i=0) {
 //Do some input validation
 function valdata($g, $fixed_size=false) {
 	if (!isset($_GET[$g])) {
-		die(track('Invalid request, missing data'));
+		header('Location: ' . __REDIR_BROWSER);
 	}
 	if (!is_string($_GET[$g])) {
 		die(track('Invalid request, unknown data type'));
